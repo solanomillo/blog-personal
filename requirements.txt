@@ -1,0 +1,9 @@
+Django==4.2
+mysqlclient
+Pillow
+django-ckeditor
+django-taggit
+django-crispy-forms
+crispy-bootstrap5
+python-decouple
+django-autoslug

@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}
+    {% if form.instance.pk %}Editar{% else %}Nueva{% endif %} Publicación - Mi Blog
+{% endblock %}
+
+{% block extra_css %}
+<link href="{% static 'ckeditor/ckeditor/contents.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-10">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h2 class="h4 mb-0">
+                    <i class="fas fa-edit me-2"></i>
+                    {% if form.instance.pk %}Editar Publicación{% else %}Nueva Publicación{% endif %}
+                </h2>
+            </div>
+            <div class="card-body">
+                <form method="post" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+                    
+                    <div class="row">
+                        <div class="col-md-8">
+                            {{ form.titulo|as_crispy_field }}
+                        </div>
+                        <div class="col-md-4">
+                            {{ form.categoria|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.slug|as_crispy_field }}
+                            <small class="form-text text-muted">
+                                Slug automático basado en el título. Puedes editarlo si es necesario.
+                            </small>
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.estado|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    {{ form.resumen|as_crispy_field }}
+
+                    <div class="mb-3">
+                        {{ form.contenido.label_tag }}
+                        {{ form.contenido }}
+                        {% if form.contenido.errors %}
+                        <div class="invalid-feedback d-block">
+                            {{ form.contenido.errors }}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{ form.imagen_destacada|as_crispy_field }}
+                        </div>
+                        <div class="col-md-6">
+                            {{ form.tags|as_crispy_field }}
+                            <small class="form-text text-muted">
+                                Separa las etiquetas con comas.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-between mt-4">
+                        <a href="{% if form.instance.pk %}{{ form.instance.get_absolute_url }}{% else %}{% url 'blog:inicio' %}{% endif %}" 
+                           class="btn btn-outline-secondary">
+                            <i class="fas fa-arrow-left me-1"></i>Cancelar
+                        </a>
+                        
+                        <div>
+                            <button type="submit" name="guardar_borrador" value="true" 
+                                    class="btn btn-outline-primary me-2">
+                                <i class="fas fa-save me-1"></i>Guardar Borrador
+                            </button>
+                            <button type="submit" name="publicar" value="true" 
+                                    class="btn btn-success">
+                                <i class="fas fa-paper-plane me-1"></i>
+                                {% if form.instance.pk %}Actualizar{% else %}Publicar{% endif %}
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Preview de la publicación -->
+        {% if form.instance.pk %}
+        <div class="mt-4 text-center">
+            <a href="{{ form.instance.get_absolute_url }}" 
+               class="btn btn-outline-primary" 
+               target="_blank">
+                <i class="fas fa-eye me-1"></i>Ver Publicación
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+<script>
+    // Auto-generar slug desde el título
+    document.getElementById('id_titulo').addEventListener('input', function() {
+        const slugField = document.getElementById('id_slug');
+        if (!slugField.value) {
+            slugField.value = this.value
+                .toLowerCase()
+                .replace(/[^a-z0-9 -]/g, '')
+                .replace(/\s+/g, '-')
+                .replace(/-+/g, '-');
+        }
+    });
+
+    // Inicializar CKEditor
+    if (typeof CKEDITOR !== 'undefined') {
+        CKEDITOR.replace('id_contenido', {
+            toolbar: 'Custom',
+            toolbar_Custom: [
+                ['Bold', 'Italic', 'Underline'],
+                ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-'],
+                ['Link', 'Unlink'],
+                ['RemoveFormat', 'Source']
+            ]
+        });
+    }
+</script>
+{% endblock %}

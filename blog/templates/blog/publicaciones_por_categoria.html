@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+
+{% block title %}Categoría: {{ categoria.nombre }} - Mi Blog{% endblock %}
+
+{% block content %}
+<!-- Header de Categoría -->
+<div class="category-header bg-light py-4 rounded mb-5">
+    <div class="container text-center">
+        <h1 class="display-5 fw-bold text-primary">{{ categoria.nombre }}</h1>
+        <p class="lead text-muted">{{ categoria.descripcion|default:"Publicaciones en esta categoría" }}</p>
+        <p class="mb-0">
+            <span class="badge bg-primary fs-6">{{ publicaciones.count }} publicación{{ publicaciones.count|pluralize:"es" }}</span>
+        </p>
+    </div>
+</div>
+
+<!-- Lista de Publicaciones -->
+<div class="row">
+    {% if publicaciones %}
+        {% for publicacion in publicaciones %}
+        <div class="col-lg-6 mb-4">
+            <article class="card h-100 shadow-sm">
+                {% if publicacion.imagen_destacada %}
+                <img src="{{ publicacion.imagen_destacada.url }}" 
+                     class="card-img-top" 
+                     alt="{{ publicacion.titulo }}"
+                     style="height: 200px; object-fit: cover;">
+                {% else %}
+                <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center" 
+                     style="height: 200px;">
+                    <i class="fas fa-image fa-3x text-white-50"></i>
+                </div>
+                {% endif %}
+                
+                <div class="card-body d-flex flex-column">
+                    <div class="mb-2">
+                        <span class="badge bg-primary">{{ publicacion.categoria.nombre }}</span>
+                        {% for tag in publicacion.tags.all|slice:":3" %}
+                        <span class="badge bg-secondary">{{ tag.name }}</span>
+                        {% endfor %}
+                    </div>
+                    
+                    <h2 class="card-title h5">
+                        <a href="{% url 'blog:post_detalle' publicacion.slug %}" 
+                           class="text-decoration-none text-dark">
+                            {{ publicacion.titulo }}
+                        </a>
+                    </h2>
+                    
+                    <p class="card-text flex-grow-1">
+                        {{ publicacion.resumen|default:publicacion.contenido|striptags|truncatewords:25 }}
+                    </p>
+                    
+                    <div class="mt-auto">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <small class="text-muted">
+                                <i class="fas fa-user me-1"></i>{{ publicacion.autor.username }}
+                            </small>
+                            <small class="text-muted">
+                                <i class="fas fa-calendar me-1"></i>
+                                {{ publicacion.fecha_publicacion|date:"d M Y" }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="col-12 text-center py-5">
+            <i class="fas fa-folder-open fa-3x text-muted mb-3"></i>
+            <h3 class="text-muted">No hay publicaciones en esta categoría</h3>
+            <p class="text-muted">Próximamente habrá contenido en esta categoría.</p>
+            <a href="{% url 'blog:inicio' %}" class="btn btn-primary">
+                <i class="fas fa-arrow-left me-1"></i>Volver al Inicio
+            </a>
+        </div>
+    {% endif %}
+</div>
+
+<!-- Paginación -->
+{% if is_paginated %}
+<nav aria-label="Paginación de publicaciones" class="mt-5">
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+        </li>
+        {% endif %}
+        
+        {% for num in page_obj.paginator.page_range %}
+        <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+        </li>
+        {% endfor %}
+        
+        {% if page_obj.has_next %}
+        <li class="page-item">
+            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+        </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+<!-- Volver a Categorías -->
+<div class="text-center mt-4">
+    <a href="{% url 'blog:inicio' %}#categorias" class="btn btn-outline-primary">
+        <i class="fas fa-arrow-left me-1"></i>Ver Todas las Categorías
+    </a>
+</div>
+{% endblock %}

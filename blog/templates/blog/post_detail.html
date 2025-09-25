@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ publicacion.titulo }} - Mi Blog{% endblock %}
+
+{% block content %}
+<article class="blog-post">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'blog:inicio' %}">Inicio</a></li>
+            <li class="breadcrumb-item">
+                <a href="{% url 'blog:posts_por_categoria' publicacion.categoria.slug %}">
+                    {{ publicacion.categoria.nombre }}
+                </a>
+            </li>
+            <li class="breadcrumb-item active">{{ publicacion.titulo|truncatewords:5 }}</li>
+        </ol>
+    </nav>
+
+    <!-- Header de la Publicación -->
+    <header class="mb-4">
+        <div class="text-center mb-3">
+            {% if publicacion.imagen_destacada %}
+            <img src="{{ publicacion.imagen_destacada.url }}" 
+                 alt="{{ publicacion.titulo }}" 
+                 class="img-fluid rounded shadow" 
+                 style="max-height: 400px; object-fit: cover;">
+            {% endif %}
+        </div>
+        
+        <h1 class="display-5 fw-bold mb-3">{{ publicacion.titulo }}</h1>
+        
+        <div class="d-flex flex-wrap justify-content-between align-items-center text-muted mb-3">
+            <div>
+                <i class="fas fa-user me-1"></i>
+                <span class="me-3">{{ publicacion.autor.get_full_name|default:publicacion.autor.username }}</span>
+                
+                <i class="fas fa-calendar me-1"></i>
+                <span class="me-3">{{ publicacion.fecha_publicacion|date:" de F, Y" }}</span>
+                
+                <i class="fas fa-clock me-1"></i>
+                <span>{{ publicacion.fecha_publicacion|timesince }}</span>
+            </div>
+            
+          
+        </div>
+        
+        <div class="d-flex flex-wrap gap-2 mb-4">
+            <a href="{% url 'blog:posts_por_categoria' publicacion.categoria.slug %}" 
+               class="badge bg-primary text-decoration-none">
+                {{ publicacion.categoria.nombre }}
+            </a>
+            {% for tag in publicacion.tags.all %}
+            <span class="badge bg-secondary">{{ tag.name }}</span>
+            {% endfor %}
+        </div>
+    </header>
+
+    <!-- Contenido de la Publicación -->
+    <section class="post-content mb-5">
+        <div class="lead mb-4">
+            {{ publicacion.resumen|default:"" }}
+        </div>
+        
+        <div class="content-body">
+            {{ publicacion.contenido|safe }}
+        </div>
+    </section>
+
+    <!-- Información del Autor -->
+    <section class="author-info bg-light p-4 rounded mb-5">
+        <div class="row align-items-center">
+            <div class="col-md-2 text-center">
+                <i class="fas fa-user-circle fa-3x text-primary"></i>
+            </div>
+            <div class="col-md-10">
+                <h4 class="h5 mb-1">Sobre el autor</h4>
+                <p class="mb-0 text-muted">
+                    {{ publicacion.autor.get_full_name|default:publicacion.autor.username }} 
+                    es un desarrollador profesional con experiencia en Django y Python.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comentarios -->
+    <section class="comments-section">
+        <h3 class="mb-4 border-bottom pb-2">
+            <i class="fas fa-comments me-2"></i>
+            Comentarios ({{ comentarios.count }})
+        </h3>
+
+        <!-- Lista de Comentarios -->
+        {% if comentarios %}
+        <div class="comments-list mb-5">
+            {% for comentario in comentarios %}
+            <div class="comment-card card mb-3 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <h5 class="card-title h6 mb-0">
+                            <i class="fas fa-user me-1 text-primary"></i>
+                            {{ comentario.autor.username }}
+                        </h5>
+                        <small class="text-muted">
+                            {{ comentario.fecha_creacion|date:"d M Y H:i" }}
+                        </small>
+                    </div>
+                    <p class="card-text mb-0">{{ comentario.contenido }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center py-4 mb-5">
+            <i class="fas fa-comment-slash fa-2x text-muted mb-3"></i>
+            <p class="text-muted">No hay comentarios aún. ¡Sé el primero en comentar!</p>
+        </div>
+        {% endif %}
+
+        <!-- Formulario de Comentario -->
+        {% if user.is_authenticated %}
+        <div class="comment-form card shadow">
+            <div class="card-header bg-light">
+                <h4 class="h6 mb-0"><i class="fas fa-edit me-2"></i>Agregar Comentario</h4>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{% url 'blog:agregar_comentario' publicacion.pk %}">
+                    {% csrf_token %}
+                    {{ form_comentario|crispy }}
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-paper-plane me-1"></i>Publicar Comentario
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% else %}
+        <div class="alert alert-info text-center">
+            <i class="fas fa-info-circle me-2"></i>
+            <a href="{% url 'login' %}" class="alert-link">Inicia sesión</a> 
+            para dejar un comentario.
+        </div>
+        {% endif %}
+    </section>
+</article>
+{% endblock %}
