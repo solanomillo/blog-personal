@@ -1,642 +1,511 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}Sobre Mí - Mi Blog Personal y Profesional{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block title %}Sobre Mí - Mi Blog
+Personal y Profesional{% endblock %} {% block content %}
 <!-- Hero Section -->
 <section class="about-hero bg-gradient-primary text-white py-5 mb-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-4 text-center mb-4 mb-lg-0">
-                <div class="profile-image-container">
-                    <img src="{% static 'img/imagen.jpg' %}" 
-                         alt="Foto de perfil - {{ user.get_full_name|default:user.username }}"
-                         class="profile-image rounded-circle shadow-lg"
-                         width="250"
-                         height="250">
-                    <div class="profile-badge">
-                        <i class="fas fa-code"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <h1 class="display-4 fw-bold mb-3">Sobre Mí</h1>
-                <p class="lead mb-4">Desarrollador Junior especializado en Django, Python y mejores prácticas de desarrollo web</p>
-                <div class="d-flex flex-wrap gap-3">
-                    <a href="#contacto" class="btn btn-light btn-lg">
-                        <i class="fas fa-envelope me-2"></i>Contactar
-                    </a>
-                    <a href="{% url 'blog:inicio' %}" class="btn btn-outline-light btn-lg">
-                        <i class="fas fa-blog me-2"></i>Ver Blog
-                    </a>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-4 text-center mb-4 mb-lg-0">
+        <div class="profile-image-container">
+          <img
+            src="{% static 'img/imagen.jpg' %}"
+            alt="Foto de perfil - {{ user.get_full_name|default:user.username }}"
+            class="profile-image rounded-circle shadow-lg"
+            width="250"
+            height="250"
+          />
+          <div class="profile-badge">
+            <i class="fas fa-code"></i>
+          </div>
         </div>
+      </div>
+      <div class="col-lg-8">
+        <h1 class="display-4 fw-bold mb-3">Sobre Mí</h1>
+        <p class="lead mb-4">
+          Desarrollador Junior especializado en Django, Python y mejores
+          prácticas de desarrollo web
+        </p>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#contacto" class="btn btn-light btn-lg">
+            <i class="fas fa-envelope me-2"></i>Contactar
+          </a>
+          <a
+            href="{% url 'blog:inicio' %}"
+            class="btn btn-outline-light btn-lg"
+          >
+            <i class="fas fa-blog me-2"></i>Ver Blog
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Información Principal -->
 <section class="main-info mb-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <h2 class="h3 mb-4 text-primary">Mi Historia</h2>
-                        <p class="lead mb-4">
-                            Con más de 5 años de experiencia en desarrollo web, me especializo en crear 
-                            soluciones robustas y escalables utilizando Django, Python y las mejores 
-                            prácticas de la industria.
-                        </p>
-                        
-                        <p class="mb-4">
-                            Mi journey en el desarrollo comenzó cuando descubrí la potencia de Python 
-                            para automatizar tareas repetitivas. Desde entonces, he trabajado en 
-                            diversos proyectos, desde aplicaciones web empresariales hasta APIs REST 
-                            y sistemas de microservicios.
-                        </p>
-                        
-                        <p class="mb-4">
-                            Creo firmemente en el código limpio, la documentación adecuada y las 
-                            pruebas automatizadas. Mi filosofía de desarrollo se basa en escribir 
-                            código que no solo funcione, sino que sea mantenible y escalable.
-                        </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-4">
+            <h2 class="h3 mb-4 text-primary">Mi Historia</h2>
+            <p class="lead mb-4">
+              Estoy dando mis primeros pasos en el desarrollo web y actualmente
+              trabajo en proyectos personales. Me interesa aprender y aplicar
+              tecnologías como Django y Python, siguiendo las mejores prácticas
+              para crear soluciones claras, funcionales y escalables.
+            </p>
 
-                        <blockquote class="blockquote bg-light p-4 rounded border-start border-4 border-primary">
-                            <p class="mb-0">
-                                <i class="fas fa-quote-left text-primary me-2"></i>
-                                El software es como la arquitectura: debe ser funcional, pero también hermoso y bien estructurado.
-                            </p>
-                        </blockquote>
-                    </div>
-                </div>
-            </div>
+            <p class="mb-4">
+              Mi journey en el desarrollo comenzó cuando descubrí la potencia de
+              Python para automatizar tareas repetitivas. Desde entonces, he
+              trabajado en diversos proyectos, desde aplicaciones web
+              empresariales hasta APIs REST y sistemas de microservicios.
+            </p>
+
+            <p class="mb-4">
+              Creo firmemente en el código limpio, la documentación adecuada y
+              las pruebas automatizadas. Mi filosofía de desarrollo se basa en
+              escribir código que no solo funcione, sino que sea mantenible y
+              escalable.
+            </p>
+
+            <blockquote
+              class="blockquote bg-light p-4 rounded border-start border-4 border-primary"
+            >
+              <p class="mb-0">
+                <i class="fas fa-quote-left text-primary me-2"></i>
+                El software es como la arquitectura: debe ser funcional, pero
+                también hermoso y bien estructurado.
+              </p>
+            </blockquote>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Habilidades Técnicas -->
 <section class="skills-section mb-5">
-    <div class="container">
-        <h2 class="text-center mb-5">Habilidades Técnicas</h2>
-        
-        <div class="row">
-            <!-- Backend -->
-            <div class="col-md-6 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-primary text-white">
-                        <h4 class="h5 mb-0">
-                            <i class="fas fa-server me-2"></i>Backend
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="skill-item mb-3">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span>Django & Django REST Framework</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                                <div class="progress-bar bg-primary" style="width: 95%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item mb-3">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span>Python</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                                <div class="progress-bar bg-primary" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item mb-3">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span>MySQL & PostgreSQL</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                                <div class="progress-bar bg-primary" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span>APIs REST & GraphQL</span>
-                                <span>88%</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                                <div class="progress-bar bg-primary" style="width: 88%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  <div class="container">
+    <h2 class="text-center mb-5">Habilidades Técnicas</h2>
+
+    <div class="row">
+      <!-- Backend -->
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-header bg-primary text-white">
+            <h4 class="h5 mb-0"><i class="fas fa-server me-2"></i>Backend</h4>
+          </div>
+          <div class="card-body">
+            <div class="skill-item mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span>Django & Django REST Framework</span>
+                <span>95%</span>
+              </div>
+              <div class="progress" style="height: 8px">
+                <div class="progress-bar bg-primary" style="width: 95%"></div>
+              </div>
             </div>
 
-            <!-- Frontend -->
-            <div class="col-md-6 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-success text-white">
-                        <h4 class="h5 mb-0">
-                            <i class="fas fa-desktop me-2"></i>Frontend
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="skill-item mb-3">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span>HTML5 & CSS3</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                                <div class="progress-bar bg-success" style="width: 90%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item mb-3">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span>JavaScript & jQuery</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                                <div class="progress-bar bg-success" style="width: 80%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item mb-3">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span>Bootstrap 5</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                                <div class="progress-bar bg-success" style="width: 85%"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="d-flex justify-content-between mb-1">
-                                <span>React Basics</span>
-                                <span>70%</span>
-                            </div>
-                            <div class="progress" style="height: 8px;">
-                                <div class="progress-bar bg-success" style="width: 70%"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="skill-item mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span>Python</span>
+                <span>90%</span>
+              </div>
+              <div class="progress" style="height: 8px">
+                <div class="progress-bar bg-primary" style="width: 90%"></div>
+              </div>
             </div>
-        </div>
 
-        <!-- Herramientas y Tecnologías -->
-        <div class="row mt-4">
-            <div class="col-12">
-                <div class="card shadow-sm">
-                    <div class="card-header bg-info text-white">
-                        <h4 class="h5 mb-0">
-                            <i class="fas fa-tools me-2"></i>Herramientas & Tecnologías
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="row text-center">
-                            <div class="col-md-3 col-6 mb-3">
-                                <div class="tech-item">
-                                    <i class="fab fa-git-alt fa-2x text-primary mb-2"></i>
-                                    <h6 class="mb-1">Git</h6>
-                                    <small class="text-muted">Control de versiones</small>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-6 mb-3">
-                                <div class="tech-item">
-                                    <i class="fab fa-docker fa-2x text-primary mb-2"></i>
-                                    <h6 class="mb-1">Docker</h6>
-                                    <small class="text-muted">Contenedores</small>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-6 mb-3">
-                                <div class="tech-item">
-                                    <i class="fas fa-cloud fa-2x text-primary mb-2"></i>
-                                    <h6 class="mb-1">AWS</h6>
-                                    <small class="text-muted">Cloud Computing</small>
-                                </div>
-                            </div>
-                            <div class="col-md-3 col-6 mb-3">
-                                <div class="tech-item">
-                                    <i class="fas fa-terminal fa-2x text-primary mb-2"></i>
-                                    <h6 class="mb-1">Linux</h6>
-                                    <small class="text-muted">Servidores</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="skill-item mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span>MySQL & PostgreSQL</span>
+                <span>85%</span>
+              </div>
+              <div class="progress" style="height: 8px">
+                <div class="progress-bar bg-primary" style="width: 85%"></div>
+              </div>
             </div>
+
+            <div class="skill-item">
+              <div class="d-flex justify-content-between mb-1">
+                <span>APIs REST & GraphQL</span>
+                <span>88%</span>
+              </div>
+              <div class="progress" style="height: 8px">
+                <div class="progress-bar bg-primary" style="width: 88%"></div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Frontend -->
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-header bg-success text-white">
+            <h4 class="h5 mb-0"><i class="fas fa-desktop me-2"></i>Frontend</h4>
+          </div>
+          <div class="card-body">
+            <div class="skill-item mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span>HTML5 & CSS3</span>
+                <span>90%</span>
+              </div>
+              <div class="progress" style="height: 8px">
+                <div class="progress-bar bg-success" style="width: 90%"></div>
+              </div>
+            </div>
+
+            <div class="skill-item mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span>JavaScript & jQuery</span>
+                <span>80%</span>
+              </div>
+              <div class="progress" style="height: 8px">
+                <div class="progress-bar bg-success" style="width: 80%"></div>
+              </div>
+            </div>
+
+            <div class="skill-item mb-3">
+              <div class="d-flex justify-content-between mb-1">
+                <span>Bootstrap 5</span>
+                <span>85%</span>
+              </div>
+              <div class="progress" style="height: 8px">
+                <div class="progress-bar bg-success" style="width: 85%"></div>
+              </div>
+            </div>
+
+            <div class="skill-item">
+              <div class="d-flex justify-content-between mb-1">
+                <span>React Basics</span>
+                <span>70%</span>
+              </div>
+              <div class="progress" style="height: 8px">
+                <div class="progress-bar bg-success" style="width: 70%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Herramientas y Tecnologías -->
+    <div class="row mt-4">
+      <div class="col-12">
+        <div class="card shadow-sm">
+          <div class="card-header bg-info text-white">
+            <h4 class="h5 mb-0">
+              <i class="fas fa-tools me-2"></i>Herramientas & Tecnologías
+            </h4>
+          </div>
+          <div class="card-body">
+            <div class="row text-center">
+              <div class="col-md-3 col-6 mb-3">
+                <div class="tech-item">
+                  <i class="fab fa-git-alt fa-2x text-primary mb-2"></i>
+                  <h6 class="mb-1">Git</h6>
+                  <small class="text-muted">Control de versiones</small>
+                </div>
+              </div>
+              <div class="col-md-3 col-6 mb-3">
+                <div class="tech-item">
+                  <i class="fab fa-docker fa-2x text-primary mb-2"></i>
+                  <h6 class="mb-1">Docker</h6>
+                  <small class="text-muted">Contenedores</small>
+                </div>
+              </div>
+              <div class="col-md-3 col-6 mb-3">
+                <div class="tech-item">
+                  <i class="fas fa-cloud fa-2x text-primary mb-2"></i>
+                  <h6 class="mb-1">AWS</h6>
+                  <small class="text-muted">Cloud Computing</small>
+                </div>
+              </div>
+              <div class="col-md-3 col-6 mb-3">
+                <div class="tech-item">
+                  <i class="fas fa-terminal fa-2x text-primary mb-2"></i>
+                  <h6 class="mb-1">Linux</h6>
+                  <small class="text-muted">Servidores</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- Experiencia Profesional -->
 <section class="experience-section mb-5">
-    <div class="container">
-        <h2 class="text-center mb-5">Experiencia Profesional</h2>
-        
-        <div class="timeline">
-            <!-- Experiencia 1 -->
-            <div class="timeline-item">
-                <div class="timeline-date">2022 - Presente</div>
-                <div class="timeline-content card shadow-sm">
-                    <div class="card-body">
-                        <h4 class="h5">Senior Django Developer</h4>
-                        <h5 class="h6 text-primary">Tech Solutions Inc.</h5>
-                        <p class="mb-3">
-                            Lidero el desarrollo de aplicaciones web empresariales utilizando Django 
-                            y Django REST Framework. Implemento arquitecturas escalables y superviso 
-                            las mejores prácticas de desarrollo.
-                        </p>
-                        <div class="skills-tags">
-                            <span class="badge bg-primary">Django</span>
-                            <span class="badge bg-primary">Python</span>
-                            <span class="badge bg-primary">PostgreSQL</span>
-                            <span class="badge bg-primary">Docker</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <h2 class="text-center mb-5">Experiencia Profesional</h2>
 
-            <!-- Experiencia 2 -->
-            <div class="timeline-item">
-                <div class="timeline-date">2020 - 2022</div>
-                <div class="timeline-content card shadow-sm">
-                    <div class="card-body">
-                        <h4 class="h5">Full Stack Developer</h4>
-                        <h5 class="h6 text-primary">Digital Agency</h5>
-                        <p class="mb-3">
-                            Desarrollé aplicaciones web completas, desde el backend con Django hasta 
-                            el frontend con Bootstrap y JavaScript. Colaboré en proyectos para clientes 
-                            internacionales.
-                        </p>
-                        <div class="skills-tags">
-                            <span class="badge bg-primary">Django</span>
-                            <span class="badge bg-primary">JavaScript</span>
-                            <span class="badge bg-primary">Bootstrap</span>
-                            <span class="badge bg-primary">MySQL</span>
-                        </div>
-                    </div>
-                </div>
+    <div class="timeline">
+      <!-- Experiencia 1 -->
+      <div class="timeline-item">
+        <div class="timeline-date">2022 - Presente</div>
+        <div class="timeline-content card shadow-sm">
+          <div class="card-body">
+            <h4 class="h5">Senior Django Developer</h4>
+            <h5 class="h6 text-primary">Tech Solutions Inc.</h5>
+            <p class="mb-3">
+              Lidero el desarrollo de aplicaciones web empresariales utilizando
+              Django y Django REST Framework. Implemento arquitecturas
+              escalables y superviso las mejores prácticas de desarrollo.
+            </p>
+            <div class="skills-tags">
+              <span class="badge bg-primary">Django</span>
+              <span class="badge bg-primary">Python</span>
+              <span class="badge bg-primary">PostgreSQL</span>
+              <span class="badge bg-primary">Docker</span>
             </div>
-
-            <!-- Experiencia 3 -->
-            <div class="timeline-item">
-                <div class="timeline-date">2018 - 2020</div>
-                <div class="timeline-content card shadow-sm">
-                    <div class="card-body">
-                        <h4 class="h5">Python Developer Junior</h4>
-                        <h5 class="h6 text-primary">Startup Innovadora</h5>
-                        <p class="mb-3">
-                            Comencé mi carrera profesional desarrollando scripts de automatización 
-                            y pequeñas aplicaciones web. Aprendí las bases del desarrollo con Python 
-                            y Django.
-                        </p>
-                        <div class="skills-tags">
-                            <span class="badge bg-primary">Python</span>
-                            <span class="badge bg-primary">Django</span>
-                            <span class="badge bg-primary">HTML/CSS</span>
-                            <span class="badge bg-primary">Git</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Experiencia 2 -->
+      <div class="timeline-item">
+        <div class="timeline-date">2020 - 2022</div>
+        <div class="timeline-content card shadow-sm">
+          <div class="card-body">
+            <h4 class="h5">Full Stack Developer</h4>
+            <h5 class="h6 text-primary">Digital Agency</h5>
+            <p class="mb-3">
+              Desarrollé aplicaciones web completas, desde el backend con Django
+              hasta el frontend con Bootstrap y JavaScript. Colaboré en
+              proyectos para clientes internacionales.
+            </p>
+            <div class="skills-tags">
+              <span class="badge bg-primary">Django</span>
+              <span class="badge bg-primary">JavaScript</span>
+              <span class="badge bg-primary">Bootstrap</span>
+              <span class="badge bg-primary">MySQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Experiencia 3 -->
+      <div class="timeline-item">
+        <div class="timeline-date">2018 - 2020</div>
+        <div class="timeline-content card shadow-sm">
+          <div class="card-body">
+            <h4 class="h5">Python Developer Junior</h4>
+            <h5 class="h6 text-primary">Startup Innovadora</h5>
+            <p class="mb-3">
+              Comencé mi carrera profesional desarrollando scripts de
+              automatización y pequeñas aplicaciones web. Aprendí las bases del
+              desarrollo con Python y Django.
+            </p>
+            <div class="skills-tags">
+              <span class="badge bg-primary">Python</span>
+              <span class="badge bg-primary">Django</span>
+              <span class="badge bg-primary">HTML/CSS</span>
+              <span class="badge bg-primary">Git</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Educación y Certificaciones -->
 <section class="education-section mb-5">
-    <div class="container">
-        <h2 class="text-center mb-5">Educación & Certificaciones</h2>
-        
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-warning text-dark">
-                        <h4 class="h5 mb-0">
-                            <i class="fas fa-graduation-cap me-2"></i>Educación
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="education-item mb-4">
-                            <h5 class="h6 text-primary">Ingeniería en Sistemas Computacionales</h5>
-                            <p class="mb-1">Universidad Tecnológica</p>
-                            <small class="text-muted">2014 - 2018</small>
-                        </div>
-                        
-                        <div class="education-item">
-                            <h5 class="h6 text-primary">Maestría en Desarrollo de Software</h5>
-                            <p class="mb-1">Universidad Digital</p>
-                            <small class="text-muted">2019 - 2021</small>
-                        </div>
-                    </div>
-                </div>
+  <div class="container">
+    <h2 class="text-center mb-5">Educación & Certificaciones</h2>
+
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-header bg-warning text-dark">
+            <h4 class="h5 mb-0">
+              <i class="fas fa-graduation-cap me-2"></i>Educación
+            </h4>
+          </div>
+          <div class="card-body">
+            <div class="education-item mb-4">
+              <h5 class="h6 text-primary">
+                Ingeniería en Sistemas Computacionales
+              </h5>
+              <p class="mb-1">Universidad Tecnológica</p>
+              <small class="text-muted">2014 - 2018</small>
             </div>
 
-            <div class="col-md-6 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-header bg-info text-white">
-                        <h4 class="h5 mb-0">
-                            <i class="fas fa-award me-2"></i>Certificaciones
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="certification-item mb-3">
-                            <h5 class="h6 text-primary">AWS Certified Developer</h5>
-                            <small class="text-muted">Amazon Web Services - 2023</small>
-                        </div>
-                        
-                        <div class="certification-item mb-3">
-                            <h5 class="h6 text-primary">Django Professional</h5>
-                            <small class="text-muted">Python Institute - 2022</small>
-                        </div>
-                        
-                        <div class="certification-item">
-                            <h5 class="h6 text-primary">Scrum Master Certified</h5>
-                            <small class="text-muted">Scrum Alliance - 2021</small>
-                        </div>
-                    </div>
-                </div>
+            <div class="education-item">
+              <h5 class="h6 text-primary">
+                Maestría en Desarrollo de Software
+              </h5>
+              <p class="mb-1">Universidad Digital</p>
+              <small class="text-muted">2019 - 2021</small>
             </div>
+          </div>
         </div>
+      </div>
+
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-header bg-info text-white">
+            <h4 class="h5 mb-0">
+              <i class="fas fa-award me-2"></i>Certificaciones
+            </h4>
+          </div>
+          <div class="card-body">
+            <div class="certification-item mb-3">
+              <h5 class="h6 text-primary">AWS Certified Developer</h5>
+              <small class="text-muted">Amazon Web Services - 2023</small>
+            </div>
+
+            <div class="certification-item mb-3">
+              <h5 class="h6 text-primary">Django Professional</h5>
+              <small class="text-muted">Python Institute - 2022</small>
+            </div>
+
+            <div class="certification-item">
+              <h5 class="h6 text-primary">Scrum Master Certified</h5>
+              <small class="text-muted">Scrum Alliance - 2021</small>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Proyectos Destacados -->
 <section class="projects-section mb-5">
-    <div class="container">
-        <h2 class="text-center mb-5">Proyectos Destacados</h2>
-        
-        <div class="row">
-            <!-- Proyecto 1 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-img-top bg-primary text-white text-center py-4">
-                        <i class="fas fa-shopping-cart fa-3x"></i>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h4 class="h5">E-commerce Platform</h4>
-                        <p class="flex-grow-1">
-                            Plataforma de comercio electrónico desarrollada con Django, 
-                            incluyendo sistema de pagos y gestión de inventario.
-                        </p>
-                        <div class="skills-tags">
-                            <span class="badge bg-primary">Django</span>
-                            <span class="badge bg-primary">PostgreSQL</span>
-                            <span class="badge bg-primary">Stripe API</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <h2 class="text-center mb-5">Proyectos Destacados</h2>
 
-            <!-- Proyecto 2 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-img-top bg-success text-white text-center py-4">
-                        <i class="fas fa-chart-line fa-3x"></i>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h4 class="h5">Analytics Dashboard</h4>
-                        <p class="flex-grow-1">
-                            Dashboard de analytics en tiempo real con Django Channels 
-                            y WebSockets para visualización de datos.
-                        </p>
-                        <div class="skills-tags">
-                            <span class="badge bg-primary">Django Channels</span>
-                            <span class="badge bg-primary">WebSockets</span>
-                            <span class="badge bg-primary">Chart.js</span>
-                        </div>
-                    </div>
-                </div>
+    <div class="row">
+      <!-- Proyecto 1 -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-img-top bg-primary text-white text-center py-4">
+            <i class="fas fa-shopping-cart fa-3x"></i>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h4 class="h5">E-commerce Platform</h4>
+            <p class="flex-grow-1">
+              Plataforma de comercio electrónico desarrollada con Django,
+              incluyendo sistema de pagos y gestión de inventario.
+            </p>
+            <div class="skills-tags">
+              <span class="badge bg-primary">Django</span>
+              <span class="badge bg-primary">PostgreSQL</span>
+              <span class="badge bg-primary">Stripe API</span>
             </div>
-
-            <!-- Proyecto 3 -->
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 shadow-sm">
-                    <div class="card-img-top bg-info text-white text-center py-4">
-                        <i class="fas fa-mobile-alt fa-3x"></i>
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h4 class="h5">API REST Mobile</h4>
-                        <p class="flex-grow-1">
-                            API REST desarrollada con Django REST Framework para aplicación móvil, 
-                            incluyendo autenticación JWT y documentación.
-                        </p>
-                        <div class="skills-tags">
-                            <span class="badge bg-primary">Django REST</span>
-                            <span class="badge bg-primary">JWT</span>
-                            <span class="badge bg-primary">Swagger</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Proyecto 2 -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-img-top bg-success text-white text-center py-4">
+            <i class="fas fa-chart-line fa-3x"></i>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h4 class="h5">Analytics Dashboard</h4>
+            <p class="flex-grow-1">
+              Dashboard de analytics en tiempo real con Django Channels y
+              WebSockets para visualización de datos.
+            </p>
+            <div class="skills-tags">
+              <span class="badge bg-primary">Django Channels</span>
+              <span class="badge bg-primary">WebSockets</span>
+              <span class="badge bg-primary">Chart.js</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto 3 -->
+      <div class="col-lg-4 col-md-6 mb-4">
+        <div class="card h-100 shadow-sm">
+          <div class="card-img-top bg-info text-white text-center py-4">
+            <i class="fas fa-mobile-alt fa-3x"></i>
+          </div>
+          <div class="card-body d-flex flex-column">
+            <h4 class="h5">API REST Mobile</h4>
+            <p class="flex-grow-1">
+              API REST desarrollada con Django REST Framework para aplicación
+              móvil, incluyendo autenticación JWT y documentación.
+            </p>
+            <div class="skills-tags">
+              <span class="badge bg-primary">Django REST</span>
+              <span class="badge bg-primary">JWT</span>
+              <span class="badge bg-primary">Swagger</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
 
 <!-- Contacto -->
 <section id="contacto" class="contact-section bg-light py-5 rounded">
-    <div class="container">
-        <h2 class="text-center mb-5">¿Trabajamos Juntos?</h2>
-        
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <div class="card shadow-sm border-0">
-                    <div class="card-body p-4">
-                        <p class="text-center lead mb-4">
-                            Estoy siempre abierto a discutir nuevos proyectos, ideas innovadoras 
-                            u oportunidades para ser parte de tu visión.
-                        </p>
-                        
-                        <div class="row text-center">
-                            <div class="col-md-4 mb-3">
-                                <div class="contact-method">
-                                    <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
-                                    <h5>Email</h5>
-                                    <p class="text-muted">tu.email@dominio.com</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="contact-method">
-                                    <i class="fab fa-linkedin fa-2x text-primary mb-3"></i>
-                                    <h5>LinkedIn</h5>
-                                    <p class="text-muted">/tu-perfil</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <div class="contact-method">
-                                    <i class="fab fa-github fa-2x text-primary mb-3"></i>
-                                    <h5>GitHub</h5>
-                                    <p class="text-muted">/tu-usuario</p>
-                                </div>
-                            </div>
-                        </div>
+  <div class="container">
+    <h2 class="text-center mb-5">¿Trabajamos Juntos?</h2>
 
-                        <div class="text-center mt-4">
-                            <a href="mailto:tu.email@dominio.com" class="btn btn-primary btn-lg me-3">
-                                <i class="fas fa-paper-plane me-2"></i>Enviar Email
-                            </a>
-                            <a href="{% url 'blog:inicio' %}" class="btn btn-outline-primary btn-lg">
-                                <i class="fas fa-blog me-2"></i>Ver Blog
-                            </a>
-                        </div>
-                    </div>
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-4">
+            <p class="text-center lead mb-4">
+              Estoy siempre abierto a discutir nuevos proyectos, ideas
+              innovadoras u oportunidades para ser parte de tu visión.
+            </p>
+
+            <div class="row text-center">
+              <div class="col-md-4 mb-3">
+                <div class="contact-method">
+                  <i class="fas fa-envelope fa-2x text-primary mb-3"></i>
+                  <h5>Email</h5>
+                  <p class="text-muted">tu.email@dominio.com</p>
                 </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="contact-method">
+                  <i class="fab fa-linkedin fa-2x text-primary mb-3"></i>
+                  <h5>LinkedIn</h5>
+                  <p class="text-muted">/tu-perfil</p>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="contact-method">
+                  <i class="fab fa-github fa-2x text-primary mb-3"></i>
+                  <h5>GitHub</h5>
+                  <p class="text-muted">/tu-usuario</p>
+                </div>
+              </div>
             </div>
+
+            <div class="text-center mt-4">
+              <a
+                href="mailto:tu.email@dominio.com"
+                class="btn btn-primary btn-lg me-3"
+              >
+                <i class="fas fa-paper-plane me-2"></i>Enviar Email
+              </a>
+              <a
+                href="{% url 'blog:inicio' %}"
+                class="btn btn-outline-primary btn-lg"
+              >
+                <i class="fas fa-blog me-2"></i>Ver Blog
+              </a>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </section>
-{% endblock %}
-
-{% block extra_css %}
-<style>
-    .bg-gradient-primary {
-        background-image: url('{% static "img/fondo.jpg" %}');
-        background-size: cover;
-        background-position: center;
-    }
-    
-    .profile-image-container {
-        position: relative;
-        display: inline-block;
-    }
-    
-    .profile-image {
-        border: 5px solid white;
-        object-fit: cover;
-    }
-    
-    .profile-badge {
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
-        background: #28a745;
-        color: white;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 3px solid white;
-    }
-    
-    .timeline {
-        position: relative;
-        max-width: 800px;
-        margin: 0 auto;
-    }
-    
-    .timeline::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: #007bff;
-        transform: translateX(-50%);
-    }
-    
-    .timeline-item {
-        position: relative;
-        margin-bottom: 30px;
-    }
-    
-    .timeline-date {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-        background: #007bff;
-        color: white;
-        padding: 5px 15px;
-        border-radius: 20px;
-        font-weight: bold;
-        top: -10px;
-        z-index: 1;
-    }
-    
-    .timeline-content {
-        width: 45%;
-        margin-left: 55%;
-    }
-    
-    .timeline-item:nth-child(even) .timeline-content {
-        margin-left: 0;
-        margin-right: 55%;
-    }
-    
-    .skills-tags .badge {
-        margin-right: 5px;
-        margin-bottom: 5px;
-    }
-    
-    .tech-item, .contact-method {
-        padding: 15px;
-        transition: transform 0.3s ease;
-    }
-    
-    .tech-item:hover, .contact-method:hover {
-        transform: translateY(-5px);
-    }
-    
-    @media (max-width: 768px) {
-        .timeline::before {
-            left: 30px;
-        }
-        
-        .timeline-date {
-            left: 30px;
-            transform: none;
-        }
-        
-        .timeline-content {
-            width: calc(100% - 80px);
-            margin-left: 80px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content {
-            margin-left: 80px;
-            margin-right: 0;
-        }
-    }
-</style>
-{% endblock %}
-
-{% block extra_js %}
-<script>
-    // Animación para las barras de progreso
-    document.addEventListener('DOMContentLoaded', function() {
-        const progressBars = document.querySelectorAll('.progress-bar');
-        
-        progressBars.forEach(bar => {
-            const width = bar.style.width;
-            bar.style.width = '0';
-            
-            setTimeout(() => {
-                bar.style.transition = 'width 1.5s ease-in-out';
-                bar.style.width = width;
-            }, 500);
-        });
-        
-        // Smooth scroll para enlaces internos
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    });
-</script>
+{% endblock %} {% block extra_js %}
+<script src="{% static 'js/sobre_mi.js' %}"></script>
 {% endblock %}

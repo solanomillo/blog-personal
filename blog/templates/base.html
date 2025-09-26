@@ -15,7 +15,8 @@
     
     {% block extra_css %}{% endblock %}
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100"><!-- 👈 cambio clave -->
+
     <!-- Header -->
     <header class="bg-dark text-white shadow-sm">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,7 +50,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#sobre-mi">Sobre Mí</a>
+                            <a class="nav-link" href="{% url 'blog:sobre_mi' %}">Sobre Mí</a>
                         </li>
                     </ul>
                     
@@ -72,7 +73,7 @@
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a class="dropdown-item" href="#">
+                                    <a class="dropdown-item" href="{% url 'usuarios:logout' %}">
                                         <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
                                     </a>
                                 </li>
@@ -80,8 +81,13 @@
                         </li>
                         {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <i class="fas fa-sign-in-alt me-1"></i>Iniciar Sesión
+                            <a class="nav-link" href="{% url 'usuarios:login' %}">
+                                <i class="fas fa-user me-1"></i> Iniciar Sesión
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'usuarios:registro' %}">
+                                <i class="fas fa-user me-1"></i> Registrarse
                             </a>
                         </li>
                         {% endif %}
@@ -92,7 +98,7 @@
     </header>
 
     <!-- Main Content -->
-    <main class="container my-4">
+    <main class="container my-4 flex-fill"><!-- 👈 cambio clave -->
         <!-- Mensajes -->
         {% if messages %}
         <div class="messages">
@@ -110,7 +116,7 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4 mt-5">
+    <footer class="bg-dark text-white py-4 mt-auto"><!-- 👈 cambio clave -->
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
@@ -131,9 +137,8 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    {% load static %}
-    <script src="{% static 'js/main.js' %}"></script>
     
-    {% block extra_js %}{% endblock %}
+    {% block extra_js %}
+    {% endblock %}
 </body>
 </html>

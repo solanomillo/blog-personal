@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Registro - Mi Blog{% endblock %}
+
+{% block content %}
+<section class="d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <article class="col-12 col-md-6 col-lg-5">
+        <div class="card shadow-lg border-0 rounded-3">
+            <div class="card-body">
+                <header class="mb-4 text-center">
+                    <h1 class="h3">Registro</h1>
+                    <p class="text-muted">Crea una cuenta para comenzar</p>
+                </header>
+
+                <form action="" method="POST" novalidate>
+                    {% csrf_token %}
+                    {% for campo in form %}
+                        <div class="mb-3">
+                            {{ campo.label_tag }}
+                            {{ campo }}
+                            {% if campo.errors %}
+                                <div class="text-danger small">
+                                    {{ campo.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                    <div class="d-grid mt-3">
+                        <button type="submit" class="btn btn-primary">
+                            Registrar
+                        </button>
+                    </div>
+                </form>
+
+                <footer class="mt-4 text-center">
+                    <p class="mb-0">
+                        ¿Ya tienes cuenta? <a href="{% url 'usuarios:login' %}">Inicia sesión aquí</a>
+                    </p>
+                </footer>
+            </div>
+        </div>
+    </article>
+</section>
+{% endblock %}

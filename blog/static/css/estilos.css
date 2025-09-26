@@ -1,3 +1,113 @@
-.hero-section{
-    background: url('/static/img/fondo2.webp') no-repeat center center/cover;
+.hero-section {
+  background: url("/static/img/fondo2.webp") no-repeat center center/cover;
+}
+.bg-gradient-primary {
+  background: url('/static/img/fondo.jpg') no-repeat center center/cover;
+}
+
+.profile-image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-image {
+  border: 5px solid white;
+  object-fit: cover;
+}
+
+.profile-badge {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #28a745;
+  color: white;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid white;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #007bff;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.timeline-date {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #007bff;
+  color: white;
+  padding: 5px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  top: -10px;
+  z-index: 1;
+}
+
+.timeline-content {
+  width: 45%;
+  margin-left: 55%;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-left: 0;
+  margin-right: 55%;
+}
+
+.skills-tags .badge {
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+.tech-item,
+.contact-method {
+  padding: 15px;
+  transition: transform 0.3s ease;
+}
+
+.tech-item:hover,
+.contact-method:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 30px;
+  }
+
+  .timeline-date {
+    left: 30px;
+    transform: none;
+  }
+
+  .timeline-content {
+    width: calc(100% - 80px);
+    margin-left: 80px;
+  }
+
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 80px;
+    margin-right: 0;
+  }
 }
