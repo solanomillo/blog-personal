@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 import os
 from decouple import config
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -147,6 +151,10 @@ Configuración del proyecto Mi Blog Personal y Profesional.
 import os
 from pathlib import Path
 from decouple import config
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -175,6 +183,7 @@ INSTALLED_APPS = [
     # Local apps
     'blog',
     'usuarios',
+    'asistente_ia',
 ]
 
 MIDDLEWARE = [
@@ -275,3 +284,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap5"
 # Login/Logout URLs
 LOGIN_REDIRECT_URL = 'inicio'
 LOGOUT_REDIRECT_URL = 'inicio'
+
+# Configuración de la API de Gemini
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_MODELO_FLASH = os.getenv("GEMINI_MODELO_FLASH")

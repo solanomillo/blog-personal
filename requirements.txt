@@ -7,3 +7,5 @@ django-crispy-forms
 crispy-bootstrap5
 python-decouple
 django-autoslug
+python-dotenv==1.0.1
+google-generativeai==0.8.4

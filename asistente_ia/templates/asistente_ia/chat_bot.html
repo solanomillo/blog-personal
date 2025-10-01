@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'asistente_ia/chatbot.css' %}">
+
+<div id="chat-widget" class="chat-widget" aria-live="polite">
+  <button id="chat-toggle" class="chat-toggle" aria-label="Abrir chat">
+    <img src="{% static 'asistente_ia/logo2.jpg' %}" alt="Luc" class="chat-logo">
+  </button>
+  <div id="chat-panel" class="chat-panel" hidden>
+    <div class="chat-header">
+      <img src="{% static 'asistente_ia/logo2.jpg' %}" alt="Luc" class="chat-logo-small">
+      <div class="chat-title">Luc — Asistente de Blog</div>
+      <button id="chat-close" class="chat-close" aria-label="Cerrar chat">&times;</button>
+    </div>
+    <div id="chat-messages" class="chat-messages" role="log" aria-live="polite"></div>
+    <div class="chat-input-area">
+      <input id="chat-input" class="chat-input" type="text" placeholder="Escribe tu pregunta..." aria-label="Mensaje">
+      <button id="chat-send" class="chat-send">Enviar</button>
+    </div>
+  </div>
+</div>
+
+<script src="{% static 'asistente_ia/chatbot.js' %}"></script>
