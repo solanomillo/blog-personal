@@ -106,15 +106,17 @@ El diseño se realizó con **Bootstrap 5 (crispy-bootstrap5)** y estilos persona
   ```
 
 ## 📂 Estructura recomendada del proyecto
+```bash
   blog-personal/
-├── asistente_ia/          # Módulo con integración de IA (Gemini API)
-├── blog/                  # App principal del blog (templates y static aquí)
-├── mi_blog/               # Configuración principal del proyecto (settings, urls, wsgi)
-├── usuario/               # App para administración de usuarios
-├── requirements.txt       # Dependencias del proyecto
-├── manage.py              # Punto de entrada de Django
-├── README.md              # Documentación del proyecto
-└── screenshots/           # Capturas de pantalla
+  ├── asistente_ia/          # Módulo con integración de IA (Gemini API)
+  ├── blog/                  # App principal del blog (templates y static aquí)
+  ├── mi_blog/               # Configuración principal del proyecto (settings, urls, wsgi)
+  ├── usuario/               # App para administración de usuarios
+  ├── requirements.txt       # Dependencias del proyecto
+  ├── manage.py              # Punto de entrada de Django
+  ├── README.md              # Documentación del proyecto
+  └── screenshots/           # Capturas de pantalla
+```
 
 ## 🖼️ Capturas de pantalla
 ![App_blog_personal](screenshots/imagen1.png)
